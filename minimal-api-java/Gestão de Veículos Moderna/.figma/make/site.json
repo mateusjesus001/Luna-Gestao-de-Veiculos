@@ -1,0 +1,11 @@
+{
+  "title": "nexus",
+  "description": "Gerencie sua frota com facilidade: adicione, remova e visualize veículos em uma interface elegante, com acesso rápido ao login.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
