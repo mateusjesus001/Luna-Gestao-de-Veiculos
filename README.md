@@ -4,7 +4,7 @@ Sistema web moderno para gerenciamento de frotas, veículos, condutores, rotas e
 
 📌 Sobre o projeto
 
-O Luna- Gestão de Veículos é uma aplicação template desenvolvida pela empresa Luna para facilitar o controle e a administração de frotas de veículos, oferecendo uma interface intuitiva para gerenciamento das informações.
+O Luna — Gestão de Veículos é uma aplicação template desenvolvida pela empresa Luna para facilitar o controle e a administração de frotas de veículos, oferecendo uma interface intuitiva para gerenciamento das informações.
 
 O sistema possui controle de acesso por perfil de usuário, permitindo diferentes níveis de permissão para administradores e editores.
 
@@ -166,9 +166,7 @@ O frontend estará disponível em:
 text
 http://localhost:5173
 
-
 Importante: mantenha o backend e o MySQL em execução enquanto utiliza o sistema.
-
 🔐 Acesso ao sistema
 
 Na primeira inicialização, o Flyway executa o script de seed e disponibiliza duas contas de teste, caso ainda não existam:
@@ -218,6 +216,12 @@ Instalar frontend	npm install
 Iniciar frontend	npm run dev
 Acessar sistema	http://localhost:5173
 
-Luna — Gestão de Veículos
+<div align="center">
 
-Sistema de gerenciamento de frotas desenvolvido para proporcionar organização, controle e praticidade na administração de veículos, condutores e rotas.
+🚗 Luna — Gestão de Veículos
+
+Organização, controle e praticidade na administração de frotas, veículos, condutores e rotas.
+
+Desenvolvido pela Luna.
+
+</div>
