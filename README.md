@@ -29,40 +29,30 @@ Hibernate / JPA	Persistência de dados
 Flyway	Gerenciamento de migrations
 Maven	Gerenciamento de dependências Java
 Node.js / npm	Gerenciamento de dependências do frontend
-
 📂 Estrutura do projeto
-
-```text
+text
 minimal-api-java/
 │
 ├── src/
 │   ├── main/
-│   │   ├── java/
-│   │   │   └── # Backend Java
-│   │   │
+│   │   ├── java/                  # Backend Java
 │   │   └── resources/
-│   │       ├── db/
-│   │       │   └── migration/       # Migrations do Flyway
-│   │       │
-│   │       └── application.yml      # Configurações do backend
+│   │       ├── db/migration/      # Migrations do Flyway
+│   │       └── application.yml    # Configurações do backend
 │   │
-│   └── test/                        # Testes automatizados
+│   └── test/                      # Testes
 │
 ├── Gestão de Veículos Moderna 2/
-│   ├── src/
-│   │   ├── services/
-│   │   │   └── api.ts               # Configuração da API
-│   │   │
-│   │   └── ...                      # Demais arquivos React
+│   ├── src/                       # Código-fonte React
+│   │   └── services/
+│   │       └── api.ts             # Configuração da API
 │   │
-│   ├── package.json                 # Dependências do frontend
-│   ├── vite.config.ts                # Configuração do Vite
-│   └── README.md                    # Documentação do frontend
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── README.md
 │
-├── pom.xml                           # Configuração do Maven
-└── README.md                         # Documentação principal
-```
-
+├── pom.xml                        # Configuração Maven
+└── README.md
 
 ⚙️ Pré-requisitos
 
@@ -123,7 +113,7 @@ bash
 mvn spring-boot:run
 
 
-A API ficará disponível em:
+Endereço da API:
 
 text
 http://localhost:5000
@@ -174,7 +164,7 @@ bash
 npm run dev
 
 
-O frontend estará disponível em:
+Endereço do frontend:
 
 text
 http://localhost:5173
