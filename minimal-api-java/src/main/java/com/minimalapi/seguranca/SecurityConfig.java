@@ -35,23 +35,33 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(ex -> ex
                         .authenticationEntryPoint((request, response, authException) -> {
+                            System.out.println("[SECURITY] 401 Unauthorized: " + request.getMethod() + " " + request.getRequestURI() + " - " + authException.getMessage());
                             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                         })
                         .accessDeniedHandler((request, response, accessDeniedException) -> {
+                            System.out.println("[SECURITY] 403 Forbidden: " + request.getMethod() + " " + request.getRequestURI() + " - " + accessDeniedException.getMessage());
                             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                         })
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/administradores/login").permitAll()
-                        .requestMatchers("/", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/", "/error", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/administradores").hasRole("Adm")
                         .requestMatchers(HttpMethod.GET, "/administradores/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/administradores").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/veiculos").hasAnyRole("Adm", "Editor")
-                        .requestMatchers(HttpMethod.GET, "/veiculos/**").hasAnyRole("Adm", "Editor")
-                        .requestMatchers(HttpMethod.POST, "/veiculos").hasRole("Adm")
-                        .requestMatchers(HttpMethod.PUT, "/veiculos/**").hasRole("Adm")
-                        .requestMatchers(HttpMethod.DELETE, "/veiculos/**").hasRole("Adm")
+                        .requestMatchers(HttpMethod.GET, "/veiculos", "/veiculos/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/veiculos", "/veiculos/**").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/veiculos", "/veiculos/**").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/veiculos", "/veiculos/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/motoristas", "/motoristas/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/motoristas", "/motoristas/**").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/motoristas", "/motoristas/**").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/motoristas", "/motoristas/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/rotas", "/rotas/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/rotas", "/rotas/**").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/rotas", "/rotas/**").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/rotas", "/rotas/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtService), UsernamePasswordAuthenticationFilter.class);
@@ -62,9 +72,16 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:7000", "https://localhost:7108", "http://localhost:5173", "http://localhost:5174", "http://127.0.0.1:5173", "http://127.0.0.1:5174"));
+        configuration.setAllowedOriginPatterns(List.of(
+                "http://localhost:*",
+                "http://127.0.0.1:*",
+                "https://localhost:*",
+                "http://10.*.*.*:*",
+                "http://192.168.*.*:*"
+        ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

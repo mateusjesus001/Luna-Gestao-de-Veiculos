@@ -1,5 +1,6 @@
-com\minimalapi\testes\AdministradorRequestTest.class
 com\minimalapi\testes\AdministradorTest.class
 com\minimalapi\testes\VeiculoRequestTest.class
-com\minimalapi\testes\AdministradorServicoMock.class
 com\minimalapi\testes\Setup.class
+com\minimalapi\testes\AdministradorRequestTest.class
+com\minimalapi\testes\VeiculoServicoMock.class
+com\minimalapi\testes\AdministradorServicoMock.class

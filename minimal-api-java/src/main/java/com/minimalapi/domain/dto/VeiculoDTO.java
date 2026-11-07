@@ -11,6 +11,8 @@ public record VeiculoDTO(
         @NotBlank(message = "A marca não pode ficar em branco")
         String marca,
 
+        String placa,
+
         @NotNull(message = "O ano não pode ser vazio")
         @Min(value = 1950, message = "Veiculo muito antigo, aceito apenas anos superiores a 1950")
         Integer ano

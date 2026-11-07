@@ -1,4 +1,4 @@
-﻿server:
+server:
   port: 5000
 
 spring:
@@ -7,7 +7,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/minimal_api?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: root
-    password: mjdc23657890
+    password: cole sua senha aqui
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -29,7 +29,7 @@ jwt:
   secret: "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
   issuer: "minimal-api-java"
   audience: "minimal-api-clients"
-  expiration-ms: 86400000  # 1 dia
+  expiration-ms: 604800000  # 7 dias
 
 springdoc:
   swagger-ui:

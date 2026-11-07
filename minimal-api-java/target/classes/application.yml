@@ -1,4 +1,4 @@
-﻿server:
+server:
   port: 5000
 
 spring:
@@ -29,7 +29,7 @@ jwt:
   secret: "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
   issuer: "minimal-api-java"
   audience: "minimal-api-clients"
-  expiration-ms: 86400000  # 1 dia
+  expiration-ms: 604800000  # 7 dias
 
 springdoc:
   swagger-ui:

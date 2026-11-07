@@ -35,19 +35,37 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        if (header != null && header.startsWith(PREFIXO_BEARER)) {
-            String token = header.substring(PREFIXO_BEARER.length());
-            try {
-                String email = jwtService.extrairEmail(token);
-                String perfil = jwtService.extrairPerfil(token);
+        if (header != null && header.regionMatches(true, 0, PREFIXO_BEARER, 0, PREFIXO_BEARER.length())) {
+            String token = header.substring(PREFIXO_BEARER.length()).trim();
+            // Remover aspas extras que o frontend pode enviar
+            token = token.replaceAll("^\"|\"$", "").replaceAll("^'|'$", "").trim();
+            if (!token.isEmpty() && !"undefined".equalsIgnoreCase(token) && !"null".equalsIgnoreCase(token)) {
+                try {
+                    String email = jwtService.extrairEmail(token);
+                    String perfil = jwtService.extrairPerfil(token);
 
-                if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                    var authorities = List.of(new SimpleGrantedAuthority("ROLE_" + perfil));
-                    var authentication = new UsernamePasswordAuthenticationToken(email, null, authorities);
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                    if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                        java.util.List<SimpleGrantedAuthority> authorities = new java.util.ArrayList<>();
+                        if (perfil != null && !perfil.trim().isEmpty()) {
+                            authorities.add(new SimpleGrantedAuthority("ROLE_" + perfil.trim()));
+                            if (perfil.equalsIgnoreCase("Adm")) {
+                                authorities.add(new SimpleGrantedAuthority("ROLE_Adm"));
+                                authorities.add(new SimpleGrantedAuthority("ROLE_ADM"));
+                                authorities.add(new SimpleGrantedAuthority("ROLE_adm"));
+                            } else if (perfil.equalsIgnoreCase("Editor")) {
+                                authorities.add(new SimpleGrantedAuthority("ROLE_Editor"));
+                                authorities.add(new SimpleGrantedAuthority("ROLE_EDITOR"));
+                                authorities.add(new SimpleGrantedAuthority("ROLE_editor"));
+                            }
+                        }
+                        var authentication = new UsernamePasswordAuthenticationToken(email, null, authorities);
+                        SecurityContextHolder.getContext().setAuthentication(authentication);
+                        System.out.println("[JWT] Auth OK: email=" + email + " perfil=" + perfil + " authorities=" + authorities);
+                    }
+                } catch (Exception e) {
+                    System.out.println("[JWT] Token inválido: " + e.getClass().getSimpleName() + " - " + e.getMessage());
+                    SecurityContextHolder.clearContext();
                 }
-            } catch (Exception ignored) {
-                SecurityContextHolder.clearContext();
             }
         }
 

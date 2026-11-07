@@ -34,6 +34,7 @@ public class VeiculoController {
         Veiculo veiculo = new Veiculo();
         veiculo.setNome(veiculoDTO.nome());
         veiculo.setMarca(veiculoDTO.marca());
+        veiculo.setPlaca(veiculoDTO.placa());
         veiculo.setAno(veiculoDTO.ano());
 
         veiculo = veiculoServico.incluir(veiculo);
@@ -69,6 +70,7 @@ public class VeiculoController {
 
         veiculo.setNome(veiculoDTO.nome());
         veiculo.setMarca(veiculoDTO.marca());
+        veiculo.setPlaca(veiculoDTO.placa());
         veiculo.setAno(veiculoDTO.ano());
 
         veiculo = veiculoServico.atualizar(veiculo);

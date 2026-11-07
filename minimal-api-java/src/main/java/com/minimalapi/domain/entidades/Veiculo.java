@@ -20,6 +20,10 @@ public class Veiculo {
     @JsonProperty("Marca")
     private String marca;
 
+    @Column(name = "Placa", length = 20)
+    @JsonProperty("Placa")
+    private String placa;
+
     @Column(name = "Ano", nullable = false)
     @JsonProperty("Ano")
     private Integer ano;
@@ -31,6 +35,14 @@ public class Veiculo {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
+        this.ano = ano;
+    }
+
+    public Veiculo(Integer id, String nome, String marca, String placa, Integer ano) {
+        this.id = id;
+        this.nome = nome;
+        this.marca = marca;
+        this.placa = placa;
         this.ano = ano;
     }
 
@@ -56,6 +68,14 @@ public class Veiculo {
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
     public Integer getAno() {
