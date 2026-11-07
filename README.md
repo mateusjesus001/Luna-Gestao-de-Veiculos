@@ -32,30 +32,37 @@ Node.js / npm	Gerenciamento de dependências do frontend
 
 📂 Estrutura do projeto
 
+```text
 minimal-api-java/
 │
 ├── src/
 │   ├── main/
-│   │   ├── java/                         # Backend Java
+│   │   ├── java/
+│   │   │   └── # Backend Java
+│   │   │
 │   │   └── resources/
 │   │       ├── db/
-│   │       │   └── migration/            # Migrations do Flyway
-│   │       └── application.yml           # Configurações do backend
+│   │       │   └── migration/       # Migrations do Flyway
+│   │       │
+│   │       └── application.yml      # Configurações do backend
 │   │
-│   └── test/                             # Testes automatizados
+│   └── test/                        # Testes automatizados
 │
 ├── Gestão de Veículos Moderna 2/
 │   ├── src/
 │   │   ├── services/
-│   │   │   └── api.ts                    # Configuração da API
-│   │   └── ...                           # Demais arquivos do frontend
+│   │   │   └── api.ts               # Configuração da API
+│   │   │
+│   │   └── ...                      # Demais arquivos React
 │   │
-│   ├── package.json                      # Dependências e scripts
-│   ├── vite.config.ts                    # Configuração do Vite
-│   └── README.md                         # Documentação do frontend
+│   ├── package.json                 # Dependências do frontend
+│   ├── vite.config.ts                # Configuração do Vite
+│   └── README.md                    # Documentação do frontend
 │
-├── pom.xml                               # Configuração do Maven
-└── README.md                             # Documentação principal
+├── pom.xml                           # Configuração do Maven
+└── README.md                         # Documentação principal
+```
+
 
 ⚙️ Pré-requisitos
 
