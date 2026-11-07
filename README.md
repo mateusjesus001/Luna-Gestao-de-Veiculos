@@ -29,6 +29,7 @@ Hibernate / JPA	Persistência de dados
 Flyway	Gerenciamento de migrations
 Maven	Gerenciamento de dependências Java
 Node.js / npm	Gerenciamento de dependências do frontend
+
 📂 Estrutura do projeto
 
 minimal-api-java/
