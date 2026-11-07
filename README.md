@@ -30,26 +30,31 @@ Flyway	Gerenciamento de migrations
 Maven	Gerenciamento de dependências Java
 Node.js / npm	Gerenciamento de dependências do frontend
 📂 Estrutura do projeto
-text
+
 minimal-api-java/
+│
 ├── src/
 │   ├── main/
-│   │   ├── java/                 # Backend Java
+│   │   ├── java/                         # Backend Java
 │   │   └── resources/
-│   │       ├── db/migration/     # Migrations do Flyway
-│   │       └── application.yml   # Configurações do backend
-│   └── test/                     # Testes
+│   │       ├── db/
+│   │       │   └── migration/            # Migrations do Flyway
+│   │       └── application.yml           # Configurações do backend
+│   │
+│   └── test/                             # Testes automatizados
 │
 ├── Gestão de Veículos Moderna 2/
-│   ├── src/                      # Código-fonte React
-│   │   └── services/
-│   │       └── api.ts            # Configuração da API
-│   ├── package.json
-│   ├── vite.config.ts
-│   └── README.md
+│   ├── src/
+│   │   ├── services/
+│   │   │   └── api.ts                    # Configuração da API
+│   │   └── ...                           # Demais arquivos do frontend
+│   │
+│   ├── package.json                      # Dependências e scripts
+│   ├── vite.config.ts                    # Configuração do Vite
+│   └── README.md                         # Documentação do frontend
 │
-├── pom.xml                       # Configuração Maven
-└── README.md
+├── pom.xml                               # Configuração do Maven
+└── README.md                             # Documentação principal
 
 ⚙️ Pré-requisitos
 
